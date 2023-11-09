@@ -1,57 +1,48 @@
-/*
- * CModuloNDigit.cpp
- *
- *  Created on: 6 Nov 2021
- *      Author: Mateo C. Querol
- */
-
 #include "CModuloNDigit.h"
-#include <iostream>
 
 using namespace std;
 
-CModuloNDigit::CModuloNDigit(unsigned int base)
+CModuloNDigit::CModuloNDigit(unsigned int maxVal) : m_maxVal(maxVal), m_currVal(0)
 {
-	if(base <= 16)
-	{
-		this->base = base;
-	}
-	else
-	{
-		this->base = 10;
-	}
-	this->currVal = 0;
+
 }
 
-/**
- * check for overflow, if not keep increasing the counter
- */
-unsigned int CModuloNDigit::increment()
+CModuloNDigit::CModuloNDigit(const CModuloNDigit &other) : m_maxVal(maxVal), m_currVal(other.m_currValue)
 {
-	if (this->currVal < this->base-1)
-	{
-		this->currVal++;
-		return 0;
-	}
-	else
-	{
-		this->currVal=0;
-		return 1;
-	}
+
 }
 
-/**
- * Print the current value of the counter
- * (Print in Hex if base = 16)
- */
-void CModuloNDigit::printCount(unsigned int base)
+CModuloNDigit::~CModuloNDigit()
 {
-	if (base == 16)
-	{
-		cout << hex << this->currVal;
-	}
-	else
-	{
-		cout << this->currVal;
-	}
+
+}
+
+CModuloNDigit& CModuloNDigit::operator=(const CModuloNDigit &other)
+{
+	m_currVal = other.m_currVal;
+	m_maxVal = other.m_maxVal;
+
+	return *this;
+}
+
+CModuloNDigit& CModuloNDigit::operator++()
+{
+	m_currValue = (m_currValue + 1) % m_maxVal;
+
+	return *this;
+}
+
+CModuloNDigit& CModuloNDigit::operator++(int)
+{
+//TODO operator overload code
+}
+
+unsigned int CModuloNDigit::getCurrVal() const
+{
+	return m_currVal;
+}
+
+unsigned int CModuloNDigit::getMaxVal() const
+{
+	return m_maxVal;
 }
