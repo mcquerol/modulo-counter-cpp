@@ -13,29 +13,25 @@
 class CModuloNCounter
 {
 private:
-	/**
-	 * provide the same base to each digit
-	 */
-	unsigned int base;
+	unsigned int m_currVal;
+	unsigned int m_base;
 
-	/**
-	 * provide the number of digits to be displayed
-	 */
-	unsigned int digits;
-
-	/**
-	 * output will be a CModuloNDigit array of size digits
-	 */
-	CModuloNDigit* mdc;
+	CModuloNDigit *mdc;
 
 public:
-	CModuloNCounter(unsigned int digits, unsigned int base);
+	CModuloNCounter(unsigned int base);
+	CModuloNCounter(const CModuloNCounter& other)
 	~CModuloNCounter();
-	/**
-	 * print n digits at a time
-	 */
-	void print();
-	unsigned int increment();
+
+	CModuloNCounter& operator=(const CModuloNCounter& other);
+	CModuloNCounter& operator++();
+	CModuloNCounter& operator++(int)
+
+	unsigned int getBase() const
+	unsigned int getCurrVal() const
+
+	void print() const;
+
 };
 
 #endif /* CMODULONCOUNTER_H_ */
