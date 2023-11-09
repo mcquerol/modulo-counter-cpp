@@ -16,7 +16,7 @@ private:
 	unsigned int m_maxVal;
 
 public:
-	CModuloNDigit(unsigned int currVal, unsigned int maxVal);
+	CModuloNDigit(unsigned int maxVal);
 	CModuloNDigit(const CModuloNDigit& other);
 	~CModuloNDigit();
 
@@ -29,5 +29,6 @@ public:
 
 
 };
+
 
 #endif /* CMODULONDIGIT_H_ */
