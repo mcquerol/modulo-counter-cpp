@@ -27,8 +27,8 @@ public:
 	CModuloNCounter& operator++();
 	CModuloNCounter& operator++(int)
 
-	unsigned int getBase() const
-	unsigned int getCurrVal() const
+	unsigned int getBase() const;
+	unsigned int getCurrVal() const;
 
 	void print() const;
 
