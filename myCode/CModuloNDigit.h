@@ -10,26 +10,24 @@
 
 class CModuloNDigit
 {
+private:
+
+	unsigned int m_currVal;
+	unsigned int m_maxVal;
+
 public:
+	CModuloNDigit(unsigned int currVal, unsigned int maxVal);
+	CModuloNDigit(const CModuloNDigit& other);
+	~CModuloNDigit();
 
-	unsigned int currVal;
-	unsigned int base;
+	CModuloNDigit& operator=(const CModuloNDigit& other);
+	CModuloNDigit& operator++();
+	CModuloNDigit& operator++(int)
 
-	/**
-	 * Class constructor passing the base as an input
-	 */
-	CModuloNDigit(unsigned int base = 10);
+	unsigned int getCurrVal() const;
+	unsigned int getMaxVal() const;
 
-	/**
-	 * check for overflow, if not increase counter by 1
-	 */
-	unsigned int increment();
 
-	/**
-	 * Print the current value of the counter
-	 * (Print in Hex if base = 16)
-	 */
-	void printCount(unsigned int base);
 };
 
 #endif /* CMODULONDIGIT_H_ */
