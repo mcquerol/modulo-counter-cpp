@@ -13,13 +13,13 @@
 class CModuloNCounter
 {
 private:
-	unsigned int m_currVal;
+	unsigned int m_numDigits;
 	unsigned int m_base;
 
 	CModuloNDigit *mdc;
 
 public:
-	CModuloNCounter(unsigned int base);
+	CModuloNCounter(unsigned int numDigits, unsigned int base);
 	CModuloNCounter(const CModuloNCounter& other)
 	~CModuloNCounter();
 
@@ -27,11 +27,9 @@ public:
 	CModuloNCounter& operator++();
 	CModuloNCounter& operator++(int)
 
-	unsigned int getBase() const;
-	unsigned int getCurrVal() const;
-
 	void print() const;
 
 };
+
 
 #endif /* CMODULONCOUNTER_H_ */
