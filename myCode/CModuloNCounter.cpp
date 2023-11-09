@@ -11,50 +11,43 @@
 
 using namespace std;
 
-CModuloNCounter::CModuloNCounter(unsigned int digits, unsigned int base)
+CModuloNCounter::CModuloNCounter(unsigned int numDigits, unsigned int base): m_base(base), m_numDigits(numDigits)
 {
-	this->base = base;
-	if(digits == 0)
-	{
-		this->digits = 1;
-	}
-	this->digits = digits;
-	this->mdc = new CModuloNDigit[this->digits]; //multiple digit counter array made up of single digit objects
-	for(unsigned int index = 0; index < this->digits; index++)
-	{
-		this->mdc[index].base = this->base;
-	}
+	mdc = new CModuloNDigit[numDigits]
+}
 
+CModuloNCounter::CModuloNCounter(const CModuloNCounter &other): m_base(other.m_base), m_numDigits(other.m_numDigits)
+{
+	mdc = new CModuloNDigit[]
 }
 
 CModuloNCounter::~CModuloNCounter()
 {
-	delete [] mdc;
+	delete mdc[];
 }
 
-/**
- * check for overflow, if not keep increasing the counter
- */
-unsigned int CModuloNCounter::increment()
+CModuloNCounter& CModuloNCounter::operator=(const CModuloNCounter &other)
 {
-	for (unsigned int i = 0; i < this->digits; i++)
-	{
-		unsigned int carry = this->mdc[i].increment();
-		if(carry == 0)
-		{
-			break;
-		}
-	}
-	return 0;
+
+	m_numDigits = other.m_numDigits;
+	m_base = other.m_base;
 }
 
-/**
- * print n digits at a time
- */
-void CModuloNCounter::print()
+CModuloNCounter& CModuloNCounter::operator++()
 {
-	for (short i = this->digits - 1; i >= 0; i--)
-	{
-		this->mdc[i].printCount(this->base);
-	}
+
+}
+
+CModuloNCounter& CModuloNCounter::operator++(int)
+{
+
+}
+
+
+void CModuloNCounter::print() const
+{
+    for (int i = 0; i < num_digits; ++i) {
+        std::cout << digits[i].getValue() << " ";
+    }
+    std::cout << std::endl;
 }
