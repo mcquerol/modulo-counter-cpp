@@ -1,34 +1,24 @@
-/*
- * CModuloNDigit.h
- *
- *  Created on: 6 Nov 2021
- *      Author: Mateo C. Querol
- */
-
 #ifndef CMODULONDIGIT_H_
 #define CMODULONDIGIT_H_
 
 class CModuloNDigit
 {
 private:
-
-	unsigned int m_currVal;
-	unsigned int m_maxVal;
+    unsigned int m_maxVal;
+    unsigned int m_currVal;
 
 public:
-	CModuloNDigit(unsigned int maxVal);
-	CModuloNDigit(const CModuloNDigit& other);
-	~CModuloNDigit();
+    CModuloNDigit(unsigned int maxVal);
+    CModuloNDigit(); // Default constructor
+    CModuloNDigit(const CModuloNDigit &other); // Copy constructor
+    ~CModuloNDigit(); // Destructor
 
-	CModuloNDigit& operator=(const CModuloNDigit& other);
-	CModuloNDigit& operator++();
-	CModuloNDigit& operator++(int)
+    CModuloNDigit &operator=(const CModuloNDigit &other);
+    CModuloNDigit &operator++();
+    CModuloNDigit operator++(int);
 
-	unsigned int getCurrVal() const;
-	unsigned int getMaxVal() const;
-
-
+    unsigned int getCurrVal() const;
+    unsigned int getMaxVal() const;
 };
 
-
-#endif /* CMODULONDIGIT_H_ */
+#endif //CMODULONDIGIT_H_
