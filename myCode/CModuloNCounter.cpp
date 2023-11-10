@@ -1,16 +1,13 @@
-/*
- * CModuloNCounter.cpp
- *
- *  Created on: 7 Nov 2021
- *      Author: Mateo C. Querol
- */
-
 #include "CModuloNCounter.h"
-
 #include <iostream>
 
 using namespace std;
 
+/**
+ * @brief Constructor for CModuloNCounter.
+ * @param base The base for the counter.
+ * @param numDigits The number of digits in the counter.
+ */
 CModuloNCounter::CModuloNCounter(unsigned int base, unsigned int numDigits)
 : m_base(base), m_numDigits(numDigits)
 {
@@ -22,11 +19,13 @@ CModuloNCounter::CModuloNCounter(unsigned int base, unsigned int numDigits)
     }
 }
 
-
+/**
+ * @brief Copy constructor for CModuloNCounter.
+ * @param other Another CModuloNCounter object to copy from.
+ */
 CModuloNCounter::CModuloNCounter(const CModuloNCounter &other)
 : m_base(other.m_base), m_numDigits(other.m_numDigits)
 {
-
 	mdc = new CModuloNDigit[m_numDigits];
     for (unsigned int i = 0; i < m_numDigits; i++)
     {
@@ -34,12 +33,19 @@ CModuloNCounter::CModuloNCounter(const CModuloNCounter &other)
     }
 }
 
-
+/**
+ * @brief Destructor for CModuloNCounter.
+ */
 CModuloNCounter::~CModuloNCounter()
 {
     delete[] mdc;
 }
 
+/**
+ * @brief Overloaded assignment operator for CModuloNCounter.
+ * @param other Another CModuloNCounter object to copy from.
+ * @return Reference to the modified CModuloNCounter object.
+ */
 CModuloNCounter &CModuloNCounter::operator=(const CModuloNCounter &other)
 {
 	if (this != &other) {
@@ -59,7 +65,10 @@ CModuloNCounter &CModuloNCounter::operator=(const CModuloNCounter &other)
 	return *this;
 }
 
-//increase first then check for overflow
+/**
+ * @brief Prefix increment operator for CModuloNCounter.
+ * @return Reference to the modified CModuloNCounter object.
+ */
 CModuloNCounter &CModuloNCounter::operator++()
 {
     for (unsigned int i = 0; i < m_numDigits; i++)
@@ -75,6 +84,11 @@ CModuloNCounter &CModuloNCounter::operator++()
     return *this; // Prefix increment
 }
 
+/**
+ * @brief Postfix increment operator for CModuloNCounter.
+ * @param int Dummy parameter to differentiate from the prefix increment.
+ * @return A copy of the original CModuloNCounter before increment.
+ */
 CModuloNCounter CModuloNCounter::operator++(int)
 {
     CModuloNCounter temp (*this);
@@ -82,7 +96,9 @@ CModuloNCounter CModuloNCounter::operator++(int)
     return temp;
 }
 
-
+/**
+ * @brief Print the current state of the counter.
+ */
 void CModuloNCounter::print() const
 {
     for (int i = m_numDigits - 1; i >= 0; i--) {
