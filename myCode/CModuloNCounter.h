@@ -13,22 +13,21 @@
 class CModuloNCounter
 {
 private:
-	unsigned int m_numDigits;
-	unsigned int m_base;
+    unsigned int m_base;
+    unsigned int m_numDigits;
 
-	CModuloNDigit *mdc;
+    CModuloNDigit *mdc;
 
 public:
-	CModuloNCounter(unsigned int numDigits, unsigned int base);
-	CModuloNCounter(const CModuloNCounter& other)
-	~CModuloNCounter();
+    CModuloNCounter(unsigned int base, unsigned int numDigits);
+    CModuloNCounter(const CModuloNCounter &other);
+    ~CModuloNCounter();
 
-	CModuloNCounter& operator=(const CModuloNCounter& other);
-	CModuloNCounter& operator++();
-	CModuloNCounter& operator++(int)
+    CModuloNCounter &operator=(const CModuloNCounter &other);
+    CModuloNCounter &operator++();
+    CModuloNCounter operator++(int);
 
-	void print() const;
-
+    void print() const;
 };
 
 
