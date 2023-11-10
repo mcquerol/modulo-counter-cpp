@@ -35,10 +35,11 @@ int main (void)
 
 	for(unsigned int count = 0; count < maxCount; count++)
 	{
-        //++Counter;
+		Counter.print();
+        ++Counter;
         //Counter.print();
-        Counter++;
-        Counter.print();
+        //Counter++;
+
 	}
 
 	return 0;

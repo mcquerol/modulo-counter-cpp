@@ -4,15 +4,20 @@
 #include "CModuloNDigit.h"
 
 /**
- * @brief Represents a modulo N counter.
+ * @file CModuloNCounter.h
+ * @brief Defines the CModuloNCounter class, representing a modulo counter with multiple digits.
+ * @author Mateo Ceballos Querol - 1112948
+ * @date '2023-11-5'
+ * This class encapsulates the concept of a modulo counter with multiple digits,
+ * allowing incrementation and overflow handling for the entire counter.
  */
 class CModuloNCounter
 {
 private:
-    unsigned int m_base; ///< Base for the counter.
+    unsigned int m_base; ///< Base for the counter (2, 8, 10 or 16).
     unsigned int m_numDigits; ///< Number of digits in the counter.
 
-    CModuloNDigit *mdc; ///< Array of modulo N digits.
+    CModuloNDigit *m_pDigits; ///< Array of CModuloNDigit objects.
 
 public:
     /**

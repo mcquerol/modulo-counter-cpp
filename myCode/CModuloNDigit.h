@@ -2,13 +2,19 @@
 #define CMODULONDIGIT_H_
 
 /**
- * @brief Represents a modulo N digit.
+ * @file CModuloNDigit.h
+ * @author Mateo Ceballos Querol - 1112948
+ * @date '2023-11-3'
+ * @brief Defines the CModuloNDigit class, representing a single digit in a modulo counter.
+ *
+ * This class encapsulates the concept of a digit in a modulo counter, with functionality
+ * to handle modulo arithmetic for a specific digit.
  */
 class CModuloNDigit
 {
 private:
-    unsigned int m_maxVal; ///< Maximum value for the digit.
-    unsigned int m_currVal; ///< Current value of the digit.
+    unsigned int m_maxVal; // Maximum value for the digit.
+    unsigned int m_currVal; // Current value of the digit.
 
 public:
     /**

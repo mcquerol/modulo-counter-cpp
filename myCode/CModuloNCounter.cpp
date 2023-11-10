@@ -3,10 +3,11 @@
 
 using namespace std;
 
+
 /**
  * @brief Constructor for CModuloNCounter.
  * @param base The base for the counter.
- * @param numDigits The number of m_pDigits in the counter.
+ * @param numDigits The number of digits in the counter.
  */
 CModuloNCounter::CModuloNCounter(unsigned int base, unsigned int numDigits)
 : m_base(base), m_numDigits(numDigits)

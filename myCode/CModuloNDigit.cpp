@@ -1,6 +1,8 @@
 #include "CModuloNDigit.h"
 #include <iostream>
+
 using namespace std;
+
 
 /**
  * @brief Constructor for CModuloNDigit.
@@ -66,7 +68,7 @@ CModuloNDigit &CModuloNDigit::operator++()
  */
 CModuloNDigit CModuloNDigit::operator++(int)
 {
-	CModuloNDigit temp = *this;
+	CModuloNDigit temp(*this);
 	++(*this);
 	return temp;
 }
