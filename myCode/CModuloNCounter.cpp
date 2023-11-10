@@ -6,16 +6,16 @@ using namespace std;
 /**
  * @brief Constructor for CModuloNCounter.
  * @param base The base for the counter.
- * @param numDigits The number of digits in the counter.
+ * @param numDigits The number of m_pDigits in the counter.
  */
 CModuloNCounter::CModuloNCounter(unsigned int base, unsigned int numDigits)
 : m_base(base), m_numDigits(numDigits)
 {
-    mdc = new CModuloNDigit[m_numDigits];
+	m_pDigits = new CModuloNDigit[m_numDigits];
 
     for (unsigned int i = 0; i < m_numDigits; i++)
     {
-        mdc[i] = CModuloNDigit(m_base);
+    	m_pDigits[i] = CModuloNDigit(m_base);
     }
 }
 
@@ -26,10 +26,10 @@ CModuloNCounter::CModuloNCounter(unsigned int base, unsigned int numDigits)
 CModuloNCounter::CModuloNCounter(const CModuloNCounter &other)
 : m_base(other.m_base), m_numDigits(other.m_numDigits)
 {
-	mdc = new CModuloNDigit[m_numDigits];
+	m_pDigits = new CModuloNDigit[m_numDigits];
     for (unsigned int i = 0; i < m_numDigits; i++)
     {
-        mdc[i] = other.mdc[i];
+    	m_pDigits[i] = other.m_pDigits[i];
     }
 }
 
@@ -38,7 +38,7 @@ CModuloNCounter::CModuloNCounter(const CModuloNCounter &other)
  */
 CModuloNCounter::~CModuloNCounter()
 {
-    delete[] mdc;
+    delete[] m_pDigits;
 }
 
 /**
@@ -50,16 +50,16 @@ CModuloNCounter &CModuloNCounter::operator=(const CModuloNCounter &other)
 {
 	if (this != &other) {
 		// Cleanup existing resources
-		delete[] mdc;
+		delete[] m_pDigits;
 
 		// Copy data from the other object
 		m_numDigits = other.m_numDigits;
 		m_base = other.m_base;
 
-		// Allocate new resources and copy digits
-		mdc = new CModuloNDigit[m_numDigits];
+		// Allocate new resources and copy m_pDigits
+		m_pDigits = new CModuloNDigit[m_numDigits];
 		for (unsigned int i = 0; i < m_numDigits; i++) {
-			mdc[i] = other.mdc[i];
+			m_pDigits[i] = other.m_pDigits[i];
 		}
 	}
 	return *this;
@@ -73,10 +73,10 @@ CModuloNCounter &CModuloNCounter::operator++()
 {
     for (unsigned int i = 0; i < m_numDigits; i++)
     {
-        ++mdc[i];
+        ++m_pDigits[i];
 
         // Check for overflow and propagate to the next digit
-        if (mdc[i].getCurrVal() != 0)
+        if (m_pDigits[i].getCurrVal() != 0)
         {
             break;
         }
@@ -104,11 +104,11 @@ void CModuloNCounter::print() const
     for (int i = m_numDigits - 1; i >= 0; i--) {
     	if (m_base == 16)
     	{
-    		std::cout << hex << mdc[i].getCurrVal() << "";
+    		std::cout << hex << m_pDigits[i].getCurrVal() << "";
     	}
     	else
     	{
-    		std::cout << mdc[i].getCurrVal() << "";
+    		std::cout << m_pDigits[i].getCurrVal() << "";
     	}
     }
     cout << endl;
